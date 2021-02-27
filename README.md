@@ -1,70 +1,88 @@
-Proxistore exercise
-As frontend developer/designer, you should be able to create HTML/CSS pages and integrate some dynamic data thanks to Javascript. As an exercise we ask to reinvent two pages which exist in our application:
+# Proxistore exercise
 
-Campaign listing,
-Campaign details.
-The exercise is quite open and feel free to go as further as you can/want. We develop some mock endpoints in order to dynamize your pages.
+As frontend developer/designer, you should be able to create HTML/CSS pages and integrate some dynamic data thanks to Javascript.
+As an exercise we ask to reinvent two pages which exist in our application:
+- Campaign listing,
+- Campaign details.
+
+The exercise is quite open and feel free to go as further as you can/want.
+We develop some mock endpoints in order to dynamize your pages.
 
 Feel free to use anything you want:
+- Framework: VueJs, React, Angular or VanillaJS
+- CSS Framework or preprocessors: Sass, bootstrap, tailwind
+- Docker based, codepen, heroku, whatever.
 
-Framework: VueJs, React, Angular or VanillaJS
-CSS Framework or preprocessors: Sass, bootstrap, tailwind
-Docker based, codepen, heroku, whatever.
 !!! For submission, create a pull request on this repository !!!
 
-For information/questions, contact us
+**For information/questions, contact us**
+- anthony.richir@proxistore.com
+- anthony.malcourant@proxistore.com
 
-anthony.richir@proxistore.com
-anthony.malcourant@proxistore.com
-Evaluation
-HTML/CSS
-JavaScript
-Creativity
-Efficiency
-We'll review your codebase and ask you some question/improvement about what you produced. You'll be able to justify things you'd not time to finish of course.
+## Evaluation
 
-Campaign listing
-List all available campaigns.
-Endpoint: https://proxistore-campaign-qof7m4cq5q-ew.a.run.app/campaigns
-Method: GET.
+- HTML/CSS
+- JavaScript
+- Creativity
+- Efficiency
 
-HTTP Parameters:
+We'll review your codebase and ask you some question/improvement about what you produced.
+You'll be able to justify things you'd not time to finish of course.
 
-Name	Description
-search	Filter campaign by id (default null)
-page	Use for pagination. Define the page number to retrieve (default 1)
-size	Use for pagination. Define the number of element by page. (default 10)
-Campaign details
-Get a campaign according to its identifier.
-Endpoint: https://proxistore-campaign-qof7m4cq5q-ew.a.run.app/campaigns/:id
-Method: GET
+## Campaign listing
 
-Data
+List all available campaigns.  
+**Endpoint**: https://proxistore-campaign-qof7m4cq5q-ew.a.run.app/campaigns  
+**Method**: GET.  
+
+**HTTP Parameters**:  
+
+| Name      | Description |
+| ----------- | ----------- |
+| search      | Filter campaign by id (default null)         |
+| page   | Use for pagination. Define the page number to retrieve (default 1)         |
+| size   | Use for pagination. Define the number of element by page. (default 10)         |
+
+## Campaign details
+
+Get a campaign according to its identifier.  
+**Endpoint**: https://proxistore-campaign-qof7m4cq5q-ew.a.run.app/campaigns/:id   
+**Method**: GET  
+
+## Data  
+
 JSON format is used as returned value. A campaign is defined by:
+| Name | Description |
+| ------- | ----------- |
+| **id** | Unique idenfifier (UUID) |
+| **details** | Common details about the campaign |
+| **statistics** | Campaign statistics such as views and clicks |
+| **diffusion** | Information about campaign diffusion. When is it live? |
+| **targets** | Campaign could be specific (In our example, for segments) |
 
-Name	 Description
-id	Unique idenfifier (UUID)
-details	Common details about the campaign
-statistics	Campaign statistics such as views and clicks
-diffusion	Information about campaign diffusion. When is it live?
-targets	Campaign could be specific (In our example, for segments)
-Details
-Name	 Description
-name	name
-source	source (enum: ADVERTISER, RETAILER, MEDIA_AGENCY)
-status	status (enum: DRAFT, RUNNING, CANCELLED, FINISHED)
-budget	budget amount + currency (enum: EUR, USD)
-statistics
-Name	 Description
-views	Views by devices. (Expected = total, Effective = real, Unique = unique)
-clicks	count + unique
-diffusion
-Name	 Description
-period	A campaign is under diffusion during a period of time (from / to)
-slots	A campaign could be under diffusion a specific hours/days
-Segments
+### Details
+| Name | Description |
+| ------- | ----------- |
+| **name** | name |
+| **source** | source (enum: ADVERTISER, RETAILER, MEDIA_AGENCY) |
+| **status** | status (enum: DRAFT, RUNNING, CANCELLED, FINISHED) |
+| **budget** | budget amount + currency (enum: EUR, USD) |
+
+### statistics
+| Name | Description |
+| ------- | ----------- |
+| **views** | Views by devices. (Expected = total, Effective = real, Unique = unique) |
+| **clicks** | count + unique |
+
+### diffusion
+| Name | Description |
+| ------- | ----------- |
+| **period** | A campaign is under diffusion during a period of time (from / to) |
+| **slots** | A campaign could be under diffusion a specific hours/days |
+
+### Segments
 Segments are hardcoded in our example:
-
+```
 val segments: Set<String> = setOf(
             "animal",
             "sport",
@@ -75,7 +93,10 @@ val segments: Set<String> = setOf(
             "culture",
             "technology",
         )
-JSON example
+```
+
+## JSON example
+```
 {
     "id": {
         "value": "43746d72-6117-4778-a953-1b376a44eac0"
@@ -213,14 +234,24 @@ JSON example
         ]
     }
 }
-Page to create
-Listing
- It should display information such as identifier, name, status.
- It should be pageable.
- It should be searchable.
-Details
- It should display segments and a way to select/unselect them.
- It should display slots table and a way to modify it.
- It should display statistics and other information which were not available on the listing page.
-Inspiration
-alt text alt text alt text alt text
+```
+
+# Page to create
+
+## Listing
+
+- [ ] It should display information such as identifier, name, status.
+- [ ] It should be pageable.
+- [ ] It should be searchable.
+
+## Details 
+
+- [ ] It should display segments and a way to select/unselect them.
+- [ ] It should display slots table and a way to modify it.
+- [ ] It should display statistics and other information which were not available on the listing page.
+
+# Inspiration
+![alt text](segment-inspiration.png)
+![alt text](stats-2-inspiration.png)
+![alt text](stats-inspiration.png)
+![alt text](timeslots-inspiration.png)
